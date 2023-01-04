@@ -2,6 +2,7 @@ const express = require("express");
 const fileUpload = require("express-fileupload");
 const mysql = require("mysql");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 
@@ -12,10 +13,10 @@ app.use(fileUpload());
 
 // create a connection to the MySQL database
 const connection = mysql.createConnection({
-  user: "root",
-  host: "localhost",
-  password: "root",
-  database: "employeesystem",
+  user: process.env.MYSQL_USER,
+  host: process.env.MYSQL_HOST,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
 
 // open the connection
